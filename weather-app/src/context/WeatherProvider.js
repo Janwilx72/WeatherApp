@@ -3,6 +3,7 @@ import { WeatherContext } from "./WeatherContext";
 import { getCountries } from "../services/CountryService";
 import { getWeatherForCity } from "../services/WeatherService";
 
+// Creates the Provider to make the state accessible to the containers
 export const WeatherProvider = (props) => {
     const [countries, setCountries] = useState([]);
     const [forecast, setForecast] = useState([]);
@@ -11,6 +12,7 @@ export const WeatherProvider = (props) => {
     const [cities, setCities] = useState([]);
     const [loadingForecast, setLoadingForecast] = useState(false);
 
+    // Make the API call to retrieve a list of countries
     const getCountriesFromApi = () => {
         const getCountriesFromApi = async () => {
             const apiCountries = await getCountries();
@@ -19,14 +21,17 @@ export const WeatherProvider = (props) => {
         getCountriesFromApi();
     }
 
+    // Add a favourite country to the state
     const addFavourite = (country) => {
         setFavourites(prevState => [...prevState, country]);
     }
 
+    // Remove a country from the favourites array
     const removeFavourite = (country) => {
         setFavourites(prevState => prevState.filter(x => x.country !== country.country));
     }
 
+    // Perform the API call to fetch the forecasted weather data
     const clickSearchWeather = async () => {
         if (!selectedCity) {
             alert('No city selected')
@@ -47,6 +52,7 @@ export const WeatherProvider = (props) => {
         }
     }
 
+    // Exposes the following to the containers housed within the Provider
     const provider = {
         countries,
         forecast,

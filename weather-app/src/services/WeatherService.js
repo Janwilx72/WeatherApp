@@ -1,5 +1,6 @@
 import axios from "axios";
 
+// Makes the API call to fetch the forecasted weather data
 export const getWeatherForCity = async (city) => {
     const apiKey = process.env.REACT_APP_WEATHER_STACK_KEY;
 

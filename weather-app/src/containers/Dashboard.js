@@ -6,7 +6,7 @@ import {DotLoader} from "react-spinners";
 
 export const Dashboard = () => {
 
-    const { forecast, setForecast, loadingForecast, setLoadingForecast, selectedCity, getCountriesFromApi } = useContext(WeatherContext);
+    const { forecast, setForecast, loadingForecast, selectedCity, getCountriesFromApi } = useContext(WeatherContext);
 
     useEffect(() => {
         setForecast([]);
@@ -22,9 +22,11 @@ export const Dashboard = () => {
         <div className='flex flex-col relative absolute left-0 bottom-0 right-0 top-0'>
             <div className="grid place-items-center">
                 <div className='flex mt-8'>
+                    {/*Search Bar section*/}
                     <LocationSearch isFavourite={false}/>
                 </div>
 
+                {/*Display loader while data is fetched and weather data when data is retrieved successfully*/}
                 <div className='flex w-full'>
                     {loadingForecast
                         ? <div className='grid place-items-center w-full'><DotLoader /></div>
