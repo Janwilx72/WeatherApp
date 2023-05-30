@@ -1,2 +1,6 @@
 # WeatherApp
-React application displaying Weather data received from an API
+
+## Run Application
+1. cd weather-app
+2. npm install
+3. npm start
